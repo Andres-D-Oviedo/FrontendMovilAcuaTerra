@@ -78,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
 
                                 if (storedPassword != null && storedPassword.equals(password)) {
                                     // Acceso permitido
-                                    Intent intent = new Intent(LoginActivity.this, MenuActivity.class);
+                                    Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                     startActivity(intent);
                                     finish();
                                     return;

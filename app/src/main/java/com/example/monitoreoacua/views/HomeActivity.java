@@ -1,12 +1,12 @@
 package com.example.monitoreoacua.views;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
-import androidx.activity.EdgeToEdge;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.example.monitoreoacua.R;
 
@@ -15,12 +15,29 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_home);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        // Referenciar el botón "Cerrar Sesión"
+        Button btnCerrarSesion = findViewById(R.id.btnCerrarSesion);
+
+        // Agregar funcionalidad al botón
+        btnCerrarSesion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Mostrar un cuadro de diálogo de confirmación
+                new AlertDialog.Builder(HomeActivity.this)
+                        .setTitle("Cerrar sesión")
+                        .setMessage("¿Estás seguro de que deseas salir de la aplicación?")
+                        .setPositiveButton("Sí", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Cerrar la aplicación
+                                finishAffinity(); // Cierra todas las actividades relacionadas
+                            }
+                        })
+                        .setNegativeButton("No", null) // No hacer nada si se presiona "No"
+                        .show();
+            }
         });
     }
 }
