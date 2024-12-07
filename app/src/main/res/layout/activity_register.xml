@@ -51,7 +51,7 @@ Descripción: Archivo XML - Correspondiente a la interfaz "Registro" - AcuaTerra
                 android:text="@string/registro_usuario"
                 android:textSize="32sp"
                 android:textColor="@color/black"
-                android:fontFamily="@font/Koulen"
+                android:fontFamily="@font/koulen"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:paddingBottom="20dp"
